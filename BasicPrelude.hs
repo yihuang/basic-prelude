@@ -29,6 +29,7 @@ module BasicPrelude
   , empty
   , (++)
   , concat
+  , sortWith
 
     -- * Text exports
   , Text.lines
@@ -144,3 +145,5 @@ infixr 5 ++
 concat :: Monoid w => [w] -> w
 concat = mconcat
 
+sortWith :: Ord b => (a -> b) -> [a] -> [a]
+sortWith f = sortBy (\x y -> compare (f x) (f y))
